@@ -27,3 +27,26 @@ class ResponseModel(object):
             return '<ResponseModel>(code = %s, message = %s) data = %s' % (self.code, self.message, self.data.__dict__)
         else:
             return '<ResponseModel>(code = %s, message = %s) data = %s' % (self.code, self.message, self.data)
+
+
+class CCError(Exception):
+    pass
+
+
+class APIError(CCError):
+
+    code: int
+    message: str
+
+    def __init__(self, **kwargs: dict):
+        code = kwargs.get('code')
+        if code is None:
+            code = 0
+        self.code = code
+        message = kwargs.get('message')
+        if message is None:
+            message = '未知错误'
+        self.message = message
+
+    def __repr__(self):
+        return '<APIError>(code = %s, message = %s)' % (self.code, self.message)

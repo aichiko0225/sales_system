@@ -1,10 +1,7 @@
-import logging
 from flask import Flask, render_template, make_response
 from routes.index import main
 from routes import allow_cross_domain
 from flask_cors import CORS
-
-logging.basicConfig(level=logging.INFO)
 
 
 app = Flask(__name__)

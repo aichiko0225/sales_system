@@ -3,8 +3,9 @@ from routes import allow_cross_domain
 from models import Base
 from sqlalchemy import Column, Integer, String
 from routes import session
-from utils import log
-from models import ResponseModel
+from utils import log, logger
+from models import ResponseModel, APIError
+
 
 # 创建一个 蓝图对象 并且路由定义在蓝图对象中
 # 然后在 flask 主代码中「注册蓝图」来使用
@@ -27,28 +28,41 @@ class Auth_User(Base):
 
     @classmethod
     def find(cls, username: str, password: str):
-
-        # session.query(Auth_User)
-        return {
-            'username': username,
-            'user_id': 1000
-        }
-
+        try:
+            user = session.query(Auth_User).filter(Auth_User.username == username).one()
+            if user.password == password:
+                return {
+                    'username': user.username,
+                    'user_id': user.id
+                }
+            else:
+                raise Exception('密码错误')
+        except Exception as e:
+            if str(e) != '密码错误':
+                e = Exception('用户不存在')
+            logger.exception(e)
+            raise APIError(code=1, message=str(e))
+        
 
 @main.route('/login', methods=["POST"])
 def index():
     username = request.form.get('username')
     password = request.form.get('password')
-    log(request.form)
+    # log(request.form)
     if username is None:
         response = ResponseModel(code=1, message='用户名不正确')
         return jsonify(response.__dict__)
     else:
         if len(username) > 0 and len(password) > 5:
-            data = Auth_User.find(username=username, password=password)
-            response = ResponseModel(code=0, message='登录成功', data=data)
-            return jsonify(response.__dict__)
+            try:
+                data = Auth_User.find(username=username, password=password)
+                response = ResponseModel(code=0, message='登录成功', data=data)
+                return jsonify(response.__dict__)
+            except APIError as identifier:
+                response = ResponseModel(code=1, message=identifier.message)
+                return jsonify(response.__dict__)
         else:
             response = ResponseModel(code=1, message='用户名不正确')
             return jsonify(response.__dict__)
+
 

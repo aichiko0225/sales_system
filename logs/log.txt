@@ -1,4 +1,25 @@
-2018/08/24 15:42:15 ImmutableMultiDict([('username', 'admin'), ('password', '123456')])
-2018/08/24 15:43:43 ImmutableMultiDict([('username', 'admin'), ('password', '123456')])
-2018/08/24 15:43:43 data ====  lalala
-2018/08/24 15:44:47 ImmutableMultiDict([('username', 'admin'), ('password', '123456')])
+2018-08-28 10:48:55,551 - _internal.py[line:88] - WARNING:  * Debugger is active!
+2018-08-28 10:48:55,564 - _internal.py[line:88] - INFO:  * Debugger PIN: 976-773-217
+2018-08-28 10:49:01,761 - log.py[line:109] - INFO: SHOW VARIABLES LIKE 'sql_mode'
+2018-08-28 10:49:01,761 - log.py[line:109] - INFO: {}
+2018-08-28 10:49:01,769 - log.py[line:109] - INFO: SELECT DATABASE()
+2018-08-28 10:49:01,769 - log.py[line:109] - INFO: {}
+2018-08-28 10:49:01,771 - log.py[line:109] - INFO: show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+2018-08-28 10:49:01,771 - log.py[line:109] - INFO: {}
+2018-08-28 10:49:01,777 - log.py[line:109] - INFO: SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2018-08-28 10:49:01,778 - log.py[line:109] - INFO: {}
+2018-08-28 10:49:01,778 - log.py[line:109] - INFO: SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2018-08-28 10:49:01,779 - log.py[line:109] - INFO: {}
+2018-08-28 10:49:01,779 - log.py[line:109] - INFO: SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+2018-08-28 10:49:01,779 - log.py[line:109] - INFO: {}
+2018-08-28 10:49:01,782 - log.py[line:109] - INFO: BEGIN (implicit)
+2018-08-28 10:49:01,783 - log.py[line:109] - INFO: SELECT auth_user.id AS auth_user_id, auth_user.username AS auth_user_username, auth_user.password AS auth_user_password 
+FROM auth_user 
+WHERE auth_user.username = %(username_1)s
+2018-08-28 10:49:01,783 - log.py[line:109] - INFO: {'username_1': 'admin'}
+2018-08-28 10:49:01,785 - index.py[line:43] - ERROR: 密码错误
+Traceback (most recent call last):
+  File "/Users/ash/Desktop/Github/ash/sales_system/routes/index.py", line 39, in find
+    raise Exception('密码错误')
+Exception: 密码错误
+2018-08-28 10:49:01,787 - _internal.py[line:88] - INFO: 127.0.0.1 - - [28/Aug/2018 10:49:01] "POST /account/login HTTP/1.1" 200 -
