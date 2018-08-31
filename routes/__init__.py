@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 # 初始化数据库连接:
-engine = create_engine('mysql+pymysql://root:xucheng225917@localhost:3306/python_test', encoding="utf-8", echo=True)
+engine = create_engine('mysql+pymysql://ash_0225:Xucheng_0225@116.62.21.15:3306/python_test', encoding="utf-8", echo=True)
 # 创建DBSession类型:
 DBSession = sessionmaker(bind=engine)
 # 创建session对象:

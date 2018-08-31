@@ -1,25 +1,179 @@
-2018-08-28 10:48:55,551 - _internal.py[line:88] - WARNING:  * Debugger is active!
-2018-08-28 10:48:55,564 - _internal.py[line:88] - INFO:  * Debugger PIN: 976-773-217
-2018-08-28 10:49:01,761 - log.py[line:109] - INFO: SHOW VARIABLES LIKE 'sql_mode'
-2018-08-28 10:49:01,761 - log.py[line:109] - INFO: {}
-2018-08-28 10:49:01,769 - log.py[line:109] - INFO: SELECT DATABASE()
-2018-08-28 10:49:01,769 - log.py[line:109] - INFO: {}
-2018-08-28 10:49:01,771 - log.py[line:109] - INFO: show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
-2018-08-28 10:49:01,771 - log.py[line:109] - INFO: {}
-2018-08-28 10:49:01,777 - log.py[line:109] - INFO: SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
-2018-08-28 10:49:01,778 - log.py[line:109] - INFO: {}
-2018-08-28 10:49:01,778 - log.py[line:109] - INFO: SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
-2018-08-28 10:49:01,779 - log.py[line:109] - INFO: {}
-2018-08-28 10:49:01,779 - log.py[line:109] - INFO: SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
-2018-08-28 10:49:01,779 - log.py[line:109] - INFO: {}
-2018-08-28 10:49:01,782 - log.py[line:109] - INFO: BEGIN (implicit)
-2018-08-28 10:49:01,783 - log.py[line:109] - INFO: SELECT auth_user.id AS auth_user_id, auth_user.username AS auth_user_username, auth_user.password AS auth_user_password 
+2018-08-30 16:29:03,610 - _internal.py[line:88] - WARNING:  * Debugger is active!
+2018-08-30 16:29:03,622 - _internal.py[line:88] - INFO:  * Debugger PIN: 976-773-217
+2018-08-30 16:29:23,269 - log.py[line:109] - INFO: SHOW VARIABLES LIKE 'sql_mode'
+2018-08-30 16:29:23,271 - log.py[line:109] - INFO: {}
+2018-08-30 16:29:23,332 - log.py[line:109] - INFO: SELECT DATABASE()
+2018-08-30 16:29:23,333 - log.py[line:109] - INFO: {}
+2018-08-30 16:29:23,390 - log.py[line:109] - INFO: show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+2018-08-30 16:29:23,390 - log.py[line:109] - INFO: {}
+2018-08-30 16:29:23,424 - log.py[line:109] - INFO: SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2018-08-30 16:29:23,425 - log.py[line:109] - INFO: {}
+2018-08-30 16:29:23,454 - log.py[line:109] - INFO: SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2018-08-30 16:29:23,457 - log.py[line:109] - INFO: {}
+2018-08-30 16:29:23,490 - log.py[line:109] - INFO: SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+2018-08-30 16:29:23,490 - log.py[line:109] - INFO: {}
+2018-08-30 16:29:23,550 - log.py[line:109] - INFO: BEGIN (implicit)
+2018-08-30 16:29:23,552 - log.py[line:109] - INFO: SELECT auth_user.id AS auth_user_id, auth_user.username AS auth_user_username, auth_user.password AS auth_user_password 
 FROM auth_user 
 WHERE auth_user.username = %(username_1)s
-2018-08-28 10:49:01,783 - log.py[line:109] - INFO: {'username_1': 'admin'}
-2018-08-28 10:49:01,785 - index.py[line:43] - ERROR: 密码错误
+2018-08-30 16:29:23,552 - log.py[line:109] - INFO: {'username_1': 'admin'}
+2018-08-30 16:29:23,580 - index.py[line:43] - ERROR: 用户不存在
 Traceback (most recent call last):
-  File "/Users/ash/Desktop/Github/ash/sales_system/routes/index.py", line 39, in find
-    raise Exception('密码错误')
-Exception: 密码错误
-2018-08-28 10:49:01,787 - _internal.py[line:88] - INFO: 127.0.0.1 - - [28/Aug/2018 10:49:01] "POST /account/login HTTP/1.1" 200 -
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 516, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 727, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 1066, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 683, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.7/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'python_test.auth_user' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ash/Desktop/Github/ash/sales_system/routes/index.py", line 32, in find
+    user = session.query(Auth_User).filter(Auth_User.username == username).one()
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2947, in one
+    ret = self.one_or_none()
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2917, in one_or_none
+    ret = list(self)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2988, in __iter__
+    return self._execute_and_instances(context)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3011, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 516, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 727, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 1066, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 683, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.7/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'python_test.auth_user' doesn't exist") [SQL: 'SELECT auth_user.id AS auth_user_id, auth_user.username AS auth_user_username, auth_user.password AS auth_user_password \nFROM auth_user \nWHERE auth_user.username = %(username_1)s'] [parameters: {'username_1': 'admin'}] (Background on this error at: http://sqlalche.me/e/f405)
+2018-08-30 16:29:23,598 - _internal.py[line:88] - INFO: 127.0.0.1 - - [30/Aug/2018 16:29:23] "POST /account/login HTTP/1.1" 200 -
+2018-08-30 16:29:29,338 - log.py[line:109] - INFO: SELECT auth_user.id AS auth_user_id, auth_user.username AS auth_user_username, auth_user.password AS auth_user_password 
+FROM auth_user 
+WHERE auth_user.username = %(username_1)s
+2018-08-30 16:29:29,338 - log.py[line:109] - INFO: {'username_1': 'admin'}
+2018-08-30 16:29:29,367 - index.py[line:43] - ERROR: 用户不存在
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 516, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 727, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 1066, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 683, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.7/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'python_test.auth_user' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ash/Desktop/Github/ash/sales_system/routes/index.py", line 32, in find
+    user = session.query(Auth_User).filter(Auth_User.username == username).one()
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2947, in one
+    ret = self.one_or_none()
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2917, in one_or_none
+    ret = list(self)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2988, in __iter__
+    return self._execute_and_instances(context)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3011, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 516, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 727, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 1066, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.7/site-packages/pymysql/connections.py", line 683, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.7/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.7/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'python_test.auth_user' doesn't exist") [SQL: 'SELECT auth_user.id AS auth_user_id, auth_user.username AS auth_user_username, auth_user.password AS auth_user_password \nFROM auth_user \nWHERE auth_user.username = %(username_1)s'] [parameters: {'username_1': 'admin'}] (Background on this error at: http://sqlalche.me/e/f405)
+2018-08-30 16:29:29,369 - _internal.py[line:88] - INFO: 127.0.0.1 - - [30/Aug/2018 16:29:29] "POST /account/login HTTP/1.1" 200 -
+2018-08-30 16:32:09,714 - log.py[line:109] - INFO: SELECT auth_user.id AS auth_user_id, auth_user.username AS auth_user_username, auth_user.password AS auth_user_password 
+FROM auth_user 
+WHERE auth_user.username = %(username_1)s
+2018-08-30 16:32:09,714 - log.py[line:109] - INFO: {'username_1': 'admin'}
+2018-08-30 16:32:09,745 - _internal.py[line:88] - INFO: 127.0.0.1 - - [30/Aug/2018 16:32:09] "POST /account/login HTTP/1.1" 200 -
+2018-08-30 16:32:25,378 - log.py[line:109] - INFO: SELECT auth_user.id AS auth_user_id, auth_user.username AS auth_user_username, auth_user.password AS auth_user_password 
+FROM auth_user 
+WHERE auth_user.username = %(username_1)s
+2018-08-30 16:32:25,380 - log.py[line:109] - INFO: {'username_1': 'admin'}
+2018-08-30 16:32:25,410 - _internal.py[line:88] - INFO: 127.0.0.1 - - [30/Aug/2018 16:32:25] "POST /account/login HTTP/1.1" 200 -
