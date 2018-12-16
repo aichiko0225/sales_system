@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, render_template, request, Response
-from routes import allow_cross_domain
 from models import Base
 from sqlalchemy import Column, Integer, String
 from routes import session
