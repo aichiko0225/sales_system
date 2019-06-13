@@ -1,5 +1,5 @@
-from flask_restful import Resource, Api, reqparse, fields, marshal_with
-from flask import Flask, request
+from flask_restful import Resource, Api, reqparse, fields, marshal_with, marshal
+from flask import Flask, request, jsonify
 import random
 
 app = Flask(__name__)
@@ -131,9 +131,30 @@ class Todo2(Resource):
         return {'uri': 'None'}
 
 
+"""
+复杂结构¶
+你可以有一个扁平的结构，marshal_with 将会把它转变为一个嵌套结构
+"""
+
+
+class Todo3(Resource):
+    def get(self):
+        resource_fields = {'name': fields.String}
+        resource_fields['address'] = {}
+        resource_fields['address']['line 1'] = fields.String(attribute='addr1')
+        resource_fields['address']['line 2'] = fields.String(attribute='addr2')
+        resource_fields['address']['city'] = fields.String
+        resource_fields['address']['state'] = fields.String
+        resource_fields['address']['zip'] = fields.String
+
+        data = {'name': 'bob', 'addr1': '123 fake street', 'addr2': '', 'city': 'New York', 'state': 'NY', 'zip': '10468'}
+        return jsonify(marshal(data, resource_fields))
+        
+
 api.add_resource(Todo, '/todo')
 api.add_resource(Todo1, '/todo1')
 api.add_resource(Todo2, '/todo2')
+api.add_resource(Todo3, '/todo3')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=6000, debug=True)
